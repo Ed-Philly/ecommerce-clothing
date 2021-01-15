@@ -45,6 +45,11 @@ class SignUp extends Component {
 
             })
         } catch (error) {
+            this.setState({
+                displayName:"",
+            email:'',
+            password:'',
+            confirmPassword:''})
             console.error(error)
         }
     }

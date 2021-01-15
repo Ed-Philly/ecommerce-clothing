@@ -1,12 +1,15 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 import {auth} from '../../firebase/firebase.util'
+import {useSelector}  from 'react-redux'
 
 
 import {ReactComponent as Logo} from '../../assets/crown.svg'
 import './header.scss'
 
-const Header = ({currentUser}) => {
+const Header = () => {
+
+    const currentUser = useSelector( state=>state.user.currentUser)
     return ( 
         <div className="header">
             <Link to='/' className="logo-container">
@@ -26,9 +29,10 @@ const Header = ({currentUser}) => {
                 }
 
                 {
-                    currentUser?.length > 0 && <div className='avatar'>
-                        <div className="avatar-text">{currentUser.displayName[0].toUpperCase()}</div>
+                    currentUser ? <div className='avatar'>
+                        <div className="avatar-text">{currentUser.displayName.slice(0,1).toUpperCase()}</div>
                     </div>
+                    :""
                 }
                 
             </div>
