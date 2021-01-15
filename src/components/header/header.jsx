@@ -21,6 +21,14 @@ const Header = ({currentUser}) => {
                     <div className="option border-link" onClick={()=>auth.signOut()}>SIGN OUT</div>
                     :
                     <Link className="option border-link" to="/signin">SIGN IN</Link>
+                    
+                    
+                }
+
+                {
+                    currentUser?.length > 0 && <div className='avatar'>
+                        <div className="avatar-text">{currentUser.displayName[0].toUpperCase()}</div>
+                    </div>
                 }
                 
             </div>

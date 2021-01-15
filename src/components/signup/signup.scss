@@ -1,0 +1,18 @@
+.sign-up {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 380px;
+
+  .title {
+    margin: 10px 0;
+  }
+  .signup-error {
+    color: red;
+    font-size: 16px;
+    margin-bottom: 20px;
+    position: absolute;
+    bottom: 0px;
+    right: 0;
+  }
+}
