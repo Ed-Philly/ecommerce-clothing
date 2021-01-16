@@ -1,28 +1,22 @@
-import React,{useState,useEffect} from 'react';
+import React from 'react';
 import './cart-dropdown.scss'
 import { useSelector } from "react-redux";
 import CustomButton from '../custom-button/custom-button';
 import CartItems from '../cart-item/cart-item';
+import {selectCartItems} from '../../redux/cart/cart.selector'
 
 const CartDropdown = () => {
 
+    //using reselector type selector for memoization 
+    const cartItems = useSelector(selectCartItems)
     
-    const cartState = useSelector(state => state.cart.cartItems)
-    const [cart,setCartIn] = useState([])
 
-    useEffect(()=>{
-        setCartIn(cartState)
-        
-    },[cartState])
-
-
-
-    const cartItems = cart.map(cartItem => <CartItems key={cartItem.id} item={cartItem}/>)
+    const cartItemsList = cartItems.map(cartItem => <CartItems key={cartItem.id} item={cartItem}/>)
 
     return ( 
         <div className="cart-dropdown">
             <div className="cart-items">
-                {cartItems}
+                {cartItemsList}
                 
             </div>
             <CustomButton>GO TO CHECKOUT</CustomButton>
