@@ -2,6 +2,7 @@ import React,{useState,useEffect} from 'react';
 import './cart-dropdown.scss'
 import { useSelector } from "react-redux";
 import CustomButton from '../custom-button/custom-button';
+import CartItems from '../cart-item/cart-item';
 
 const CartDropdown = () => {
 
@@ -16,16 +17,7 @@ const CartDropdown = () => {
 
 
 
-    const cartItems = cart.map((item,i) =>{
-    
-      return  (<div key={i}>
-            <h3>name: {item.name}</h3>
-            <p>price:£ {item.price}</p>
-            <p>id:{item.id}</p>
-            <p>quantity: {item.quantity}</p>
-            <hr/>
-        </div>
-    )})
+    const cartItems = cart.map(cartItem => <CartItems key={cartItem.id} item={cartItem}/>)
 
     return ( 
         <div className="cart-dropdown">
