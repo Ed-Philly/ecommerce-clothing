@@ -1,7 +1,12 @@
 import React from 'react';
 import './checkout-item.scss'
+import {clearItemFromCart,addItem,removeItem} from '../../redux/cart/cart.actions'
 
-const CheckoutItem = ({cartItem:{imageUrl,name,price,quantity}}) => {
+import {useDispatch} from 'react-redux'
+
+const CheckoutItem = ({cartItem}) => {
+    const dispatch = useDispatch()
+    const {imageUrl,name,price,quantity} = cartItem
     return (
         <div className="checkout-item">
             <div className="image-container">
@@ -12,13 +17,19 @@ const CheckoutItem = ({cartItem:{imageUrl,name,price,quantity}}) => {
             </span>
             
             <span className="quantity">
-                {quantity}
+               <div className="arrow" onClick={()=> dispatch(removeItem(cartItem))}> 
+               &#10094; 
+               </div> 
+               <span className="value">{quantity} </span>
+               <div className="arrow" onClick={()=> dispatch(addItem(cartItem))}> 
+               &#10095; 
+               </div>
             </span>
 
             <span className="price">
                 {price}
             </span>
-            <div className="remove-button">
+            <div className="remove-button" onClick={()=>dispatch(clearItemFromCart(cartItem))}>
                 &#10006;
             </div>
         </div>

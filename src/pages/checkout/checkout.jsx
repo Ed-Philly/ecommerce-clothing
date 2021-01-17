@@ -1,6 +1,7 @@
 import React from 'react';
 import './checkout.scss'
-import {useSelector,useDispatch} from "react-redux"
+import {useSelector} from "react-redux"
+
 
 import {selectCartItems,selectCartTotal} from '../../redux/cart/cart.selector'
 import CheckoutItem from '../../components/checkout-item/checkout-item';
@@ -10,6 +11,8 @@ const CheckoutPage = () => {
 
     const cartItems = useSelector(selectCartItems)
     const cartItemsTotal = useSelector(selectCartTotal)
+    
+
     return ( 
     
     <div className='checkout-page'>
