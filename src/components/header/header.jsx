@@ -4,6 +4,7 @@ import {auth} from '../../firebase/firebase.util'
 import {useSelector}  from 'react-redux'
 
 
+
 import {ReactComponent as Logo} from '../../assets/crown.svg'
 import './header.scss'
 import CartIcon from '../cart-icon/cart-icon';
