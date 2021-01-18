@@ -35,12 +35,7 @@ const Header = () => {
 
                 <CartIcon/>
 
-                   {
-                    currentUser ? <div className='avatar'>
-                        <div className="avatar-text">{currentUser.displayName.slice(0,1).toUpperCase()}</div>
-                    </div>
-                    :""
-                }
+                
                 
             </div>
             {
