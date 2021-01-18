@@ -14,7 +14,7 @@ const CartIcon = () => {
 
     //const reducer = (accumulator, currentValue) => (accumulator + currentValue.quantity);
     const itemCount = useSelector( ( selectCartItemsCount))
-    console.log('i am being called')
+   
     
     const dispatch = useDispatch()
 
