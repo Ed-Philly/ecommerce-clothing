@@ -8,7 +8,7 @@ const CollectionsOverview = () => {
      //using selectors created from reselect
     //memoization
     const collections = useSelector(selectCollectionsForPreview)
-    console.log(collections)
+    
     return ( <div className="collections-overview">
         {
             collections.map(({id,...otherCollectionProps})=>(
