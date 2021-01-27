@@ -16,7 +16,7 @@ const CartDropdown = () => {
 
     const handleClick = ()=>{
         dispatch(toggleCartHidden())  
-        history.push("./checkout")
+        history.push("/checkout")
        
     }
 

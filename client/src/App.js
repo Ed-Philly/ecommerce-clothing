@@ -35,7 +35,6 @@ const App = ({ setCurrentUser, currentUser }) => {
 
     return () => {
       unsubscribeFromAuth();
-      console.log("unmounting");
     };
   });
 

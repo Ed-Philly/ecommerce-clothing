@@ -11,7 +11,9 @@ const CollectionPage = () => {
 
     
     const match = useRouteMatch()
+    console.log(match)
     const collection = useSelector(selectCollection(match.params.collectionId))
+    console.log(collection)
 
     const {title,items} = collection
     
