@@ -1,29 +1,26 @@
-import React ,{Component} from 'react';
+import React ,{useState} from 'react';
 import { auth, createUserProfileDocument } from '../../firebase/firebase.util'
 import CustomButton from '../custom-button/custom-button';
 import FormInput from '../form-input/form-input';
 import './signup.scss'
 
-class SignUp extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
+const SignUp = () =>{
+   
+    const [userCredentials, setCredentials] = useState({
             displayName:"",
             email:'',
             password:'',
-            confirmPassword:''
+            confirmPassword:'',})
 
-          }
-    }
+    
+    const {displayName,email,password,confirmPassword} = userCredentials
 
-    handleSubmit = async event=>{
+    const handleSubmit = async event=>{
         event.preventDefault();
 
-        const {displayName,email,password,confirmPassword} = this.state
-
         if (password !== confirmPassword) {
-            this.setState({
-                error:{message: "password do not match"}
+            setCredentials({
+                ...userCredentials,error:{message: "password do not match"}
             })
 
             return;
@@ -37,7 +34,7 @@ class SignUp extends Component {
             await createUserProfileDocument(user,{displayName});
 
             //if user registration is successfull reset form fields to blank
-            this.setState({
+            setCredentials({
                 displayName:"",
             email:'',
             password:'',
@@ -45,33 +42,33 @@ class SignUp extends Component {
 
             })
         } catch (error) {
-            this.setState({
+            setCredentials({
                 displayName:"",
             email:'',
             password:'',
-            confirmPassword:''})
-            console.error(error)
+            confirmPassword:'',
+        error:error})
+            
         }
     }
 
-    handleChange = event =>{
+    const handleChange = event =>{
         const {name,value} = event.target
-        this.setState({[name] : value})
+        setCredentials({...userCredentials,[name] : value})
     }
-    render() { 
-        const {displayName,password,confirmPassword,email} = this.state;
-        return ( 
-            <div className="sign-up">
-                <h2 className="title">I do not have a account</h2>
-                <span>Sign up with your email and password</span>
+   
+    return ( 
+        <div className="sign-up">
+            <h2 className="title">I do not have a account</h2>
+            <span>Sign up with your email and password</span>
 
-                <form onSubmit={this.handleSubmit} className="sign-up-form">
+            <form onSubmit={handleSubmit} className="sign-up-form">
                     <FormInput
                         type='text'
                         name='displayName'
                         value={displayName}
                         label="Display Name"
-                        handleChange={this.handleChange}
+                        handleChange={handleChange}
                         required
                     />
                      <FormInput
@@ -79,7 +76,7 @@ class SignUp extends Component {
                         name='email'
                         value={email}
                         label="Email"
-                        handleChange={this.handleChange}
+                        handleChange={handleChange}
                         required
                     />
                      <FormInput
@@ -87,7 +84,7 @@ class SignUp extends Component {
                         name='password'
                         value={password}
                         label="Password"
-                        handleChange={this.handleChange}
+                        handleChange={handleChange}
                         required
                     />
                      <FormInput
@@ -95,17 +92,17 @@ class SignUp extends Component {
                         name='confirmPassword'
                         value={confirmPassword}
                         label="Confirm Password"
-                       handleChange={this.handleChange}
+                       handleChange={handleChange}
                         required
                     />
                     {
-                        this.state.error && <div className="signup-error">{this.state.error.message}</div>
+                        userCredentials.error && <div className="signup-error">{userCredentials.error.message}</div>
                     }
-                    <CustomButton type="submit">SIGN UP</CustomButton>
-                </form>
-            </div>
-         );
-    }
+                <CustomButton type="submit">SIGN UP</CustomButton>
+            </form>
+        </div>
+    );
+    
 }
  
 export default SignUp;

@@ -1,0 +1,31 @@
+.prag-container {
+  width: 92%;
+  margin: 20px auto 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+
+  row-gap: 20px;
+
+  .prag-card {
+    position: relative;
+    margin: 8px;
+
+    .prag-image {
+      width: 250px;
+      height: 250px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+
+    .prag-card-title {
+      position: absolute;
+      bottom: 0;
+      font-size: small;
+      padding: 4px;
+    }
+  }
+}

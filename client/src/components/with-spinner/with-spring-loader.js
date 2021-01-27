@@ -9,12 +9,12 @@ const settings = {
   },
   spinner: {
     id: "spinner",
-    radius: 60,
+    radius: 30,
     sides: 6,
     depth: 8,
     colors: {
-      background: "#00272C", //#00272C
-      stroke: null,
+      background: "#fff", //#00272C
+      stroke: "#00272C",
       base: null,
       child: "#02C39A",
     },
